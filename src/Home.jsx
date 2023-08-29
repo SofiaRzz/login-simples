@@ -1,5 +1,6 @@
 import Button from "react-bootstrap/Button"
-import Form from "react-bootstrap/Form"
+import Container from "react-bootstrap/Container"
+import Navbar from "react-bootstrap/Navbar"
 import { AuthContext } from "./contexts/AuthContext"
 import { useContext, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
@@ -15,11 +16,18 @@ function Home() {
   }
   if (data.user){
     return (
-      <div className="d-flex justify-content-center align-items-center " style={{height:"100vh", backgroundColor:"#198754"}}>
-        {data.user.email}
-
-        <Button onClick={handleLogOut}> Sair </Button>
+      <>
+      <div style={{height:"100vh", backgroundColor:"#198754"}}>
+        <div>
+          <Navbar className="bg-body-tertiary">
+            <Container>
+              <Navbar.Brand>{data.user.email}</Navbar.Brand>
+              <Button onClick={handleLogOut}> Sair </Button>
+            </Container>
+          </Navbar>
+        </div>
       </div>
+      </>  
     )
   } else {
     useEffect(() => {
